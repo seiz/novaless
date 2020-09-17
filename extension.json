@@ -1,5 +1,6 @@
 {
     "identifier": "imd.Less",
+    "organization": "zıəs uɐɟəʇs",
     "name": "Less",
     "description": "Automatically compile less files on save.",
     "version": "1.0",
