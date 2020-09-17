@@ -15,7 +15,7 @@ class LessService {
 
     if(!execPath || execPath=="") {
       console.log("Using default lessc binary");
-      execPath = nova.extension.path + '/node_modules/less/bin/lessc'; 
+      execPath = '/usr/local/bin/lessc'; 
     }
     else{
       console.log("Using lessc binary at:" + execPath);
@@ -43,10 +43,9 @@ class LessService {
 
   async compileLessUpdate(editor) {
     var source   = editor.document.path;
-    console.log("Lessc on: " + source);
     // Check that this is enabled 
     if(source.slice((source.lastIndexOf(".") - 1 >>> 0) + 2) != 'less') { return }
-
+    console.log("Lessc on: " + source);
     // set output filename and path
     var fileext = "css";
     if ( nova.config.get('imd.Less.cssStyle')=="Compressed" ){
