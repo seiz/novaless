@@ -2,7 +2,7 @@
 
 Initial release
 
-## Version 1.0.1 to 1.0.2
+## Version 1.0.1 to 1.0.3
 
 Had to learn how Nova Extensions work and that:
 

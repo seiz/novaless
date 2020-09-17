@@ -3,7 +3,7 @@
     "organization": "zıəs uɐɟəʇs",
     "name": "Less",
     "description": "Automatically compile less files on save.",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "categories": ["formatters"],
     "repository": "https://github.com/seiz/novaless",
     "bugs": "https://github.com/seiz/novaless/issues",    
@@ -33,7 +33,7 @@
             "title": "Executable Path",
             "type": "path",
             "description": "Manually set the path for the lessc executable.",
-            "placeholder": ""
+            "placeholder": "/usr/local/bin/lessc"
         }     
     ]    
 }
