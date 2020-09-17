@@ -1,0 +1,38 @@
+{
+    "identifier": "imd.Less",
+    "name": "Less",
+    "description": "Automatically compile less files on save.",
+    "version": "1.0",
+    "categories": ["formatters"],
+    "repository": "",
+    "bugs": "",    
+    
+    "main": "main.js",
+    "entitlements": {
+        "process": true
+    },    
+    "config": [        
+        {
+             "key": "imd.Less.cssStyle",
+             "title": "CSS Style",
+             "description": "Controls the output style of the resulting CSS.",
+             "type": "enum",
+             "values": ["Expanded", "Compressed"],
+             "default": "Expanded"               
+         },
+         {
+             "key": "imd.Less.sourceMap",
+             "title": "Generate Source Map",
+             "description": "Source maps are files that tell browsers or other tools that consume CSS how that CSS corresponds to the Less files from which it was generated. They make it possible to see and even edit your Sass files in browsers.",
+             "type": "enum",
+             "values": ["External", "Embedded", "None"],
+             "default": "None" 
+         },{
+            "key": "imd.Less.execPath",
+            "title": "Executable Path",
+            "type": "path",
+            "description": "Manually set the path for the lessc executable.",
+            "placeholder": ""
+        }     
+    ]    
+}

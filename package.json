@@ -1,0 +1,13 @@
+{
+  "name": "less.novaextension",
+  "version": "1.0.0",
+  "description": "A less extension for Nova",
+  "main": "index.js",
+  "scripts": {},
+  "author": "zıəs uɐɟəʇs",
+  "license": "",
+  "dependencies": {
+    "clean-css": "^3.4.28",
+    "lessc": "^1.0.2"
+  }
+}
