@@ -35,5 +35,14 @@
             "description": "Manually set the path for the lessc executable.",
             "placeholder": "/usr/local/bin/lessc"
         }     
-    ]    
+    ],
+    "configWorkspace": [        
+        {
+             "key": "imd.Less.outputFolder",
+             "title": "Output Folder",
+             "description": "Relative path from project root to a folder where the resulting CSS is saved.",
+             "type": "string",
+             "placeholder": "/styles"               
+         }
+    ]
 }

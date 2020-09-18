@@ -51,8 +51,20 @@ class LessService {
     if ( nova.config.get('imd.Less.cssStyle')=="Compressed" ){
      fileext = "min.css"
     }
-    var outputFile = source.slice(0, -'less'.length) + fileext; // file.less becomes file.css
-    
+
+    if ( nova.workspace.config.get('imd.Less.outputFolder')!="" ){
+      var workspacePath = nova.workspace.path;
+      var sourceParts = source.split('/');
+      var sourceFile = sourceParts.pop();
+      var outputPath = nova.workspace.config.get('imd.Less.outputFolder');
+      if('/' != outputPath.charAt(outputPath.length-1)) {
+        outputPath = outputPath+'/';
+      }	  
+      var outputFile = workspacePath+outputPath+sourceFile.slice(0, -'less'.length) + fileext;
+    } else {
+      var outputFile = source.slice(0, -'less'.length) + fileext; // file.less becomes file.css
+    }
+        
     var args = this.getArgs;
         //args.push('--update');
         args.push(source);   
