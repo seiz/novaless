@@ -43,6 +43,6 @@
              "description": "Relative path from project root to a folder where the resulting CSS is saved.",
              "type": "string",
              "placeholder": "/styles"               
-         }
+         } 
     ]
 }

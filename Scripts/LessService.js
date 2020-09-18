@@ -48,11 +48,11 @@ class LessService {
     console.log("Lessc on: " + source);
     // set output filename and path
     var fileext = "css";
-    if ( nova.config.get('imd.Less.cssStyle')=="Compressed" ){
+    if ( nova.config.get('imd.Less.cssStyle')=="Compressed" ) {
      fileext = "min.css"
     }
 
-    if ( nova.workspace.config.get('imd.Less.outputFolder')!="" ){
+    if ( nova.workspace.config.get('imd.Less.outputFolder')!="" ) {
       var workspacePath = nova.workspace.path;
       var sourceParts = source.split('/');
       var sourceFile = sourceParts.pop();
