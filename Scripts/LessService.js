@@ -14,11 +14,11 @@ class LessService {
     var execPath  = nova.config.get('imd.Less.execPath');       
 
     if(!execPath || execPath=="") {
-      console.log("Using default lessc binary");
+      //console.log("Using default lessc binary");
       execPath = '/usr/local/bin/lessc'; 
     }
     else{
-      console.log("Using lessc binary at:" + execPath);
+      //console.log("Using lessc binary at:" + execPath);
     }
     var options = [];
     options.push(execPath);
@@ -45,13 +45,23 @@ class LessService {
     var source   = editor.document.path;
     // Check that this is enabled 
     if(source.slice((source.lastIndexOf(".") - 1 >>> 0) + 2) != 'less') { return }
-    console.log("Lessc on: " + source);
+    //console.log("Lessc on: " + source);
     // set output filename and path
     var fileext = "css";
     if ( nova.config.get('imd.Less.cssStyle')=="Compressed" ){
      fileext = "min.css"
     }
-    var outputFile = source.slice(0, -'less'.length) + fileext; // file.less becomes file.css
+    // get per project output directory
+    var outputFile = source.slice(0, -'less'.length) + fileext; // /folder/file.less becomes /folder/file.css
+    var outputPath = nova.workspace.config.get('imd.Less.outputPath') || "";       
+    if ( outputPath ){
+      outputFile = nova.path.normalize( nova.path.join(outputPath, nova.path.basename(outputFile)));
+      if ( ! nova.path.isAbsolute(outputPath) ){
+        outputFile = nova.path.join(nova.workspace.path, outputFile);
+        //console.log("Outputfile converted to absolute: " + outputFile);
+      }
+      //console.log("outputPath: " + outputPath + " | outputFile: " + outputFile);
+    }
     
     var args = this.getArgs;
         //args.push('--update');
@@ -61,6 +71,7 @@ class LessService {
     var options = { args: args };
     
     var process = new Process("/usr/bin/env", options);
+    console.log("Compiling less with options: ", JSON.stringify(options));
     
     var stdOut = new Array;
     process.onStdout(function(line) {
@@ -70,6 +81,7 @@ class LessService {
     var stdErr = new Array;
     process.onStderr(function(line) {
       stdErr.push(line.trim());
+      console.error(line.trim());
     });
 
     process.onDidExit(function() {
