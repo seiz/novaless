@@ -3,7 +3,7 @@
     "organization": "zıəs uɐɟəʇs",
     "name": "Less",
     "description": "Automatically compile less files on save.",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "categories": ["formatters"],
     "repository": "https://github.com/seiz/novaless",
     "bugs": "https://github.com/seiz/novaless/issues",    

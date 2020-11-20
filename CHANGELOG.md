@@ -15,3 +15,7 @@ So, you now need to install your own version of lessc. Instructions see the Deta
 
 New: Optional, per project output-path preference. Use if you want to save the compiled .css files into a specific folder. You set this in Nova via the "Project"-Menu.
 
+## Version 1.0.5
+
+New: Warn when trying to compile remote files (i.e. on SFTP-Servers) which currently seems impossible for a Nova Extension.
+

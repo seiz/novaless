@@ -43,6 +43,24 @@ class LessService {
 
   async compileLessUpdate(editor) {
     var source   = editor.document.path;
+    
+    // error out on remote files
+    if ( editor.document.isRemote ){
+      let remoteerror = new NotificationRequest("less-error");      
+      remoteerror.title = nova.localize("Less Compile Error");
+      remoteerror.body = nova.localize("Sorry, I can't compile remote files (yet).");  
+      remoteerror.actions = [nova.localize("Dismiss")];        
+      let promise = nova.notifications.add(remoteerror);
+      
+      // hide the notification after 5 seconds
+      nova._notificationTimer = setTimeout(function() { 
+        nova.notifications.cancel("less-error");         
+      }, 10000);
+      
+      console.error("Sorry, I can't compile remote files (yet). " + editor.document.uri);
+      return false;
+    }
+    
     // Check that this is enabled 
     if(source.slice((source.lastIndexOf(".") - 1 >>> 0) + 2) != 'less') { return }
     //console.log("Lessc on: " + source);
